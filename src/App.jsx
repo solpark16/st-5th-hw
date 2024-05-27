@@ -4,7 +4,6 @@ import TextList from "./components/TextList";
 import { TextContext } from "./context/TextContext";
 
 function App() {
-  // TODO: texts 를 context api 로 리팩터링 하세요.
   const [texts, setTexts] = useState(() =>
     localStorage.getItem("texts")
       ? JSON.parse(localStorage.getItem("texts"))
@@ -22,8 +21,8 @@ function App() {
   return (
     <div>
       <h1>Text Input and Listing</h1>
-      <TextContext.Provider value={{ onAddText, texts }}>
-        <TextInput />
+      <TextContext.Provider value={{ texts }}>
+        <TextInput onAddText={onAddText} />
         <TextList />
       </TextContext.Provider>
     </div>
